@@ -1,6 +1,6 @@
 # Kyvora.id
 
-Website storefront for the Kyvora game-account shop.
+Website storefront for the Kyvora.id game-account shop.
 
 ## Current structure
 
