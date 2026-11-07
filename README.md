@@ -37,3 +37,10 @@ Enable GitHub Pages for this repository using the `main` branch and `/(root)` as
 `https://leovbr.github.io/Kyvora.id/`
 
 The separate portfolio demo should be created from a copy after the production site is complete. Its LocalStorage data must remain isolated from production.
+
+
+## Admin catalog (temporary local mode)
+- Open `admin.html` to add, edit, delete, and update product availability.
+- Product data and compressed product photos are stored in the current browser's localStorage under `kyvora_products_v1`.
+- This is a frontend prototype only: changes do not sync across devices or visitors and there is no secure admin authentication yet.
+- Supabase database, Storage, and authenticated admin access must be connected before using this as the live production catalog.
