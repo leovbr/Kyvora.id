@@ -426,10 +426,18 @@
 
 /* Full Kyvora wordmark: unchanged typography, purple KY + white VORA.ID */
 .brand-name{position:relative;display:inline-flex;align-items:center;white-space:nowrap;animation:kyvora-write-loop 5.3s cubic-bezier(.22,.75,.25,1) infinite,kyvora-chakra-pulse 5.8s ease-in-out infinite;transform-origin:center}
+.brand-name::before{content:"";position:absolute;z-index:1;inset:-42% -5%;pointer-events:none;opacity:0;background:
+linear-gradient(112deg,transparent 0 45%,#c4b5fd00 46%,#c4b5fd 47%,#fff 48%,#8b5cf6 49%,#536dff 50%,transparent 52% 100%),
+radial-gradient(circle at 18% 22%,#c4b5fd 0 1.2px,transparent 2.5px),
+radial-gradient(circle at 39% 78%,#fff 0 1px,transparent 2.5px),
+radial-gradient(circle at 66% 16%,#a78bfa 0 1.3px,transparent 2.7px),
+radial-gradient(circle at 84% 70%,#fff 0 1px,transparent 2.5px);
+filter:drop-shadow(0 0 5px #8b5cf6) drop-shadow(0 0 10px #536dff);mix-blend-mode:screen;animation:kyvora-chidori-flash 5.3s ease-in-out infinite}
 .brand-name::after{content:"";position:absolute;z-index:2;top:-18%;bottom:-18%;left:0;width:48%;pointer-events:none;background:linear-gradient(105deg,transparent 0%,#c4b5fd18 28%,#fff9 48%,#a78bfa88 55%,#fff5 62%,transparent 100%);filter:blur(1px);transform:translateX(-145%);animation:kyvora-shine-loop 5.3s ease-in-out infinite}
 .brand-ky{color:#8b5cf6!important;animation:kyvora-chidori 5.8s ease-in-out infinite}
 .brand-rest{color:#f1f5ff!important;animation:kyvora-rest-glow 5.8s ease-in-out infinite}
 @keyframes kyvora-write-loop{0%{clip-path:inset(0 100% 0 0);opacity:.35}34%{clip-path:inset(0 0 0 0);opacity:1}100%{clip-path:inset(0 0 0 0);opacity:1}}
+@keyframes kyvora-chidori-flash{0%,37%,48%,100%{opacity:0;transform:translateX(-2%) scale(.96)}40%{opacity:.25}42%{opacity:1;transform:translateX(1%) scale(1.02)}44%{opacity:.72;transform:translateX(-1%) scale(1)}46%{opacity:0;transform:translateX(2%) scale(1.01)}}
 @keyframes kyvora-shine-loop{0%,77%{transform:translateX(-145%);opacity:0}79%{opacity:1}94%{transform:translateX(245%);opacity:.95}100%{transform:translateX(245%);opacity:0}}
 @keyframes kyvora-chakra-pulse{
   0%,72%,100%{filter:drop-shadow(0 0 0 transparent)}
@@ -448,5 +456,5 @@
   80%{text-shadow:0 0 7px #8b5cf655,0 0 15px #8b5cf633}
 }
 @media(prefers-reduced-motion:reduce){
- .brand-name,.brand-ky,.brand-rest,.brand-name::after{animation:none!important;clip-path:none!important;opacity:1!important;transform:none!important}
+ .brand-name,.brand-ky,.brand-rest,.brand-name::before,.brand-name::after{animation:none!important;clip-path:none!important;opacity:1!important;transform:none!important}
 }
