@@ -358,3 +358,24 @@
 .lightbox-panel>img{border-radius:10px!important}
 .lightbox-close{background:#12243d!important;border:1px solid #8b5cf688!important;color:#f1f5ff!important}
 .lightbox-count{bottom:7px!important;color:#c4b5fd!important;text-shadow:0 2px 8px #000}
+
+/* Smooth finger swipe transitions in visitor image preview */
+.lightbox-panel>img{
+  touch-action:pan-y;
+  user-select:none;
+  -webkit-user-drag:none;
+  will-change:transform,opacity;
+}
+.lightbox-panel>img.slide-next{animation:kyvora-preview-next .34s cubic-bezier(.22,.75,.25,1)}
+.lightbox-panel>img.slide-prev{animation:kyvora-preview-prev .34s cubic-bezier(.22,.75,.25,1)}
+@keyframes kyvora-preview-next{
+  0%{opacity:.45;transform:translateX(34px) scale(.985)}
+  100%{opacity:1;transform:translateX(0) scale(1)}
+}
+@keyframes kyvora-preview-prev{
+  0%{opacity:.45;transform:translateX(-34px) scale(.985)}
+  100%{opacity:1;transform:translateX(0) scale(1)}
+}
+@media(prefers-reduced-motion:reduce){
+ .lightbox-panel>img.slide-next,.lightbox-panel>img.slide-prev{animation:none}
+}
