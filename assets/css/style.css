@@ -858,3 +858,48 @@ body:not(.admin-body) :is(button,a):focus-visible{
     animation:none!important;opacity:1!important;transform:none!important
   }
 }
+
+
+/* Secondary public pages: search shortcut sits before the hamburger */
+@media(max-width:600px){
+  .secondary-page .site-header>.header-search-wrap{
+    order:2!important;
+    flex:0 0 36px!important;
+    width:36px!important;
+    margin:0 12px 0 auto!important;
+  }
+  .secondary-page .site-header>.header-search-toggle{
+    width:36px!important;
+    height:36px!important;
+    flex:0 0 36px!important;
+  }
+  .secondary-page .site-header>.menu-toggle{
+    order:3!important;
+    margin-left:0!important;
+  }
+}
+
+/* Continuous ambient motion for homepage trust points */
+.hero-meta strong{
+  display:inline-block;
+  transform-origin:left center;
+  animation:kyvora-meta-glow 4.6s ease-in-out infinite;
+}
+.hero-meta>div:nth-of-type(1) strong{animation-delay:0s}
+.hero-meta>div:nth-of-type(2) strong{animation-delay:1.15s}
+.hero-meta>div:nth-of-type(3) strong{animation-delay:2.3s}
+.hero-meta small{animation:kyvora-meta-copy 4.6s ease-in-out infinite}
+.hero-meta>div:nth-of-type(1) small{animation-delay:0s}
+.hero-meta>div:nth-of-type(2) small{animation-delay:1.15s}
+.hero-meta>div:nth-of-type(3) small{animation-delay:2.3s}
+@keyframes kyvora-meta-glow{
+  0%,100%{color:var(--text);text-shadow:0 0 0 transparent;filter:brightness(1)}
+  48%{color:#c4b5fd;text-shadow:0 0 8px #8b5cf688,0 0 17px #536dff44;filter:brightness(1.18)}
+}
+@keyframes kyvora-meta-copy{
+  0%,100%{color:var(--muted)}
+  48%{color:#d6d9e8}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-meta strong,.hero-meta small{animation:none!important}
+}
