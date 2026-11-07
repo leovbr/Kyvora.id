@@ -9,8 +9,9 @@
   const menu = $('.menu-toggle');
   const header = $('.site-header');
 
-  // Intentionally empty: no sample inventory is presented as real stock.
+  // Temporary browser-local inventory. Supabase will replace this adapter later.
   let products = [];
+  try { const saved = JSON.parse(localStorage.getItem('kyvora_products_v1') || '[]'); products = Array.isArray(saved) ? saved : []; } catch { products = []; }
   let activeFilter = 'all';
 
   const rupiah = (value) => new Intl.NumberFormat('id-ID', {
