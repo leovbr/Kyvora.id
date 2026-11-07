@@ -1,6 +1,6 @@
 (()=>{'use strict';
 const URL='https://pwjdhvpbvyazwcwbblll.supabase.co',KEY='sb_publishable_sySKIQtnTqJsHtH7jLYYBw__VoTaiBA';
-const client=window.supabase.createClient(URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+const client=window.KyvoraAuth?.client||window.supabase.createClient(URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 const buckets={products:'kyvora-product-images',testimonials:'kyvora-testimonial-images'};
 const mapProduct=r=>({id:r.id,name:r.name,game:r.game,price:Number(r.price)||0,description:r.description||'',status:r.status||'available',images:r.image_urls||[],imageUrl:(r.image_urls||[])[0]||'',createdAt:r.created_at,updatedAt:r.updated_at});
 const mapTestimonial=r=>({id:r.id,title:r.title,description:r.description||'',date:r.testimonial_date||'',images:r.image_urls||[],createdAt:r.created_at,updatedAt:r.updated_at});
