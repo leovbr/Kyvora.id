@@ -425,10 +425,12 @@
 }
 
 /* Full Kyvora wordmark: unchanged typography, purple KY + white VORA.ID */
-.brand-name{display:inline-flex;align-items:center;white-space:nowrap;animation:kyvora-write 1.8s cubic-bezier(.22,.75,.25,1) both,kyvora-chakra-pulse 5.8s ease-in-out 1.8s infinite;transform-origin:center}
+.brand-name{position:relative;display:inline-flex;align-items:center;white-space:nowrap;animation:kyvora-write-loop 5.3s cubic-bezier(.22,.75,.25,1) infinite,kyvora-chakra-pulse 5.8s ease-in-out infinite;transform-origin:center}
+.brand-name::after{content:"";position:absolute;z-index:2;top:-18%;bottom:-18%;left:0;width:48%;pointer-events:none;background:linear-gradient(105deg,transparent 0%,#c4b5fd18 28%,#fff9 48%,#a78bfa88 55%,#fff5 62%,transparent 100%);filter:blur(1px);transform:translateX(-145%);animation:kyvora-shine-loop 5.3s ease-in-out infinite}
 .brand-ky{color:#8b5cf6!important;animation:kyvora-chidori 5.8s ease-in-out infinite}
 .brand-rest{color:#f1f5ff!important;animation:kyvora-rest-glow 5.8s ease-in-out infinite}
-@keyframes kyvora-write{0%{clip-path:inset(0 100% 0 0);opacity:.35}100%{clip-path:inset(0 0 0 0);opacity:1}}
+@keyframes kyvora-write-loop{0%{clip-path:inset(0 100% 0 0);opacity:.35}34%{clip-path:inset(0 0 0 0);opacity:1}100%{clip-path:inset(0 0 0 0);opacity:1}}
+@keyframes kyvora-shine-loop{0%,77%{transform:translateX(-145%);opacity:0}79%{opacity:1}94%{transform:translateX(245%);opacity:.95}100%{transform:translateX(245%);opacity:0}}
 @keyframes kyvora-chakra-pulse{
   0%,72%,100%{filter:drop-shadow(0 0 0 transparent)}
   76%{filter:drop-shadow(0 0 5px #8b5cf6aa)}
@@ -446,5 +448,5 @@
   80%{text-shadow:0 0 7px #8b5cf655,0 0 15px #8b5cf633}
 }
 @media(prefers-reduced-motion:reduce){
- .brand-name,.brand-ky,.brand-rest{animation:none!important;clip-path:none!important;opacity:1!important}
+ .brand-name,.brand-ky,.brand-rest,.brand-name::after{animation:none!important;clip-path:none!important;opacity:1!important;transform:none!important}
 }
