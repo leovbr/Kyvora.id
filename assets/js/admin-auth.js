@@ -1,1 +1,13 @@
-(()=>{'use strict';const SESSION='kyvora_admin_session_v1',EMAIL='leovbriansyh791@gmail.com',HASH='bc318e92c3031bf10e6424edd91f0e335d928f5b8a8a4db0f3dab24b4dabb3eb',LOGIN='admin-login.html',TTL=12*60*60*1000;const path=location.pathname.split('/').pop()||'index.html';const valid=()=>{try{const s=JSON.parse(localStorage.getItem(SESSION)||'null');return !!s&&s.email===EMAIL&&Date.now()-s.at<TTL}catch{return false}};if(path===LOGIN){if(valid())location.replace('admin.html');return}if(/^admin(?:-catalog|-testimonials)?\.html$/.test(path)&&!valid()){location.replace(LOGIN+'?next='+encodeURIComponent(path));return}window.KyvoraAdminAuth={logout(){localStorage.removeItem(SESSION);location.replace(LOGIN)}};document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('[data-auth-placeholder="logout"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();if(confirm('Keluar dari dashboard admin?'))window.KyvoraAdminAuth.logout()})})})})();
+(()=>{'use strict';
+const SUPABASE_URL='https://pwjdhvpbvyazwcwbblll.supabase.co';
+const SUPABASE_KEY='sb_publishable_sySKIQtnTqJsHtH7jLYYBw__VoTaiBA';
+const LOGIN='admin-login.html',ACTIVATE='admin-activate.html';
+const protectedPath=/^admin(?:-catalog|-testimonials)?\.html$/;
+const path=location.pathname.split('/').pop()||'index.html';
+const client=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+async function isAdmin(user){if(!user?.id)return false;const {data,error}=await client.from('kyvora_admin_users').select('user_id').eq('user_id',user.id).maybeSingle();return !error&&!!data}
+async function requireAdmin(){const {data:{session}}=await client.auth.getSession();if(!session?.user||!(await isAdmin(session.user))){await client.auth.signOut();location.replace(LOGIN+'?next='+encodeURIComponent(path));return false}return true}
+window.KyvoraAuth={client,isAdmin,requireAdmin,async logout(){await client.auth.signOut();location.replace(LOGIN)}};
+if(protectedPath.test(path)){document.documentElement.style.visibility='hidden';document.addEventListener('DOMContentLoaded',async()=>{try{if(await requireAdmin())document.documentElement.style.visibility='visible'}catch{location.replace(LOGIN)}},{once:true})}
+if(path===LOGIN){client.auth.getSession().then(async({data:{session}})=>{if(session?.user&&await isAdmin(session.user)){const next=new URLSearchParams(location.search).get('next');location.replace(next&&/^admin(?:-catalog|-testimonials)?\.html$/.test(next)?next:'admin.html')}})}
+})();
