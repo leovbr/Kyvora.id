@@ -395,3 +395,31 @@
 .category-options [role=option]:hover,.category-options [role=option].selected{background:#1b3152;color:#c4b5fd}
 .category-options [role=option].selected{font-weight:700}
 @media(max-width:600px){.category-options{min-width:200px;right:0}.category-filter{gap:8px}}
+
+/* Preview gambar button — Kyvora branded pill control */
+.product-gallery .preview-images{
+  min-height:36px!important;
+  padding:0 16px!important;
+  border:1px solid #8b5cf688!important;
+  border-radius:999px!important;
+  background:linear-gradient(135deg,#12243dF2,#071426F2)!important;
+  color:#f1f5ff!important;
+  font:700 10px var(--font)!important;
+  letter-spacing:.15px;
+  box-shadow:0 5px 18px #0007, inset 0 1px 0 #ffffff12!important;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:background .2s ease,border-color .2s ease,transform .2s ease,color .2s ease!important;
+}
+.product-gallery .preview-images:active{
+  transform:scale(.96);
+  background:#30205a!important;
+  border-color:#a78bfa!important;
+}
+@media(hover:hover){
+ .product-gallery .preview-images:hover{
+  background:linear-gradient(135deg,#263c60,#182944)!important;
+  border-color:#a78bfa!important;
+  color:#c4b5fd!important;
+ }
+}
