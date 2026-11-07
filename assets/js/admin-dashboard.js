@@ -1,0 +1,1 @@
+(()=>{const r=k=>{try{const x=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(x)?x:[]}catch{return[]}};document.querySelector('#dash-products').textContent=r('kyvora_products_v1').length;document.querySelector('#dash-testimonials').textContent=r('kyvora_testimonials_v1').length})();
