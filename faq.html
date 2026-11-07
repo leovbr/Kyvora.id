@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071426">
+  <meta name="description" content="Pertanyaan umum tentang pembelian akun game di Kyvora.id.">
+  <title>FAQ — Kyvora.id</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Kyvora.id home"><span>Kyvora.id</span></a>
+    <nav class="desktop-nav" aria-label="Navigasi utama">
+      <a href="index.html#catalog">Katalog</a><a href="index.html#why-us">Keunggulan</a><a href="faq.html" aria-current="page">FAQ</a>
+    </nav>
+    <a class="header-cta" href="index.html#catalog">Jelajahi akun <span>↗</span></a>
+    <button class="menu-toggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+  </header>
+  <main>
+    <section class="faq section-wrap" id="faq">
+      <div><h2>Questions?<br><span>We've got you.</span></h2><p style="color:var(--muted);font-size:13px;line-height:1.8">Informasi singkat seputar katalog, pembelian, dan akun di Kyvora.id.</p></div>
+      <div class="faq-list">
+        <details><summary>Bagaimana cara membeli akun?<span>＋</span></summary><p>Pilih akun dari katalog, baca detailnya, lalu hubungi tim Kyvora.id untuk memastikan stok, harga, dan proses transaksi sebelum melakukan pembayaran.</p></details>
+        <details><summary>Apakah stok selalu tersedia?<span>＋</span></summary><p>Stok dapat berubah sewaktu-waktu. Hubungi tim kami untuk memastikan akun masih tersedia sebelum pembayaran.</p></details>
+        <details><summary>Bagaimana jika saya butuh informasi tambahan?<span>＋</span></summary><p>Kirim nama atau kode akun yang ingin ditanyakan kepada tim Kyvora.id agar kami bisa membantu menjelaskan detailnya.</p></details>
+        <details><summary>Bagaimana cara mengetahui detail akun?<span>＋</span></summary><p>Baca deskripsi dan informasi pada halaman produk. Jika ada detail yang belum tercantum, tanyakan kepada tim kami sebelum transaksi.</p></details>
+        <details><summary>Metode pembayaran apa yang tersedia?<span>＋</span></summary><p>Metode pembayaran akan dikonfirmasi langsung oleh tim Kyvora.id saat proses pemesanan. Pastikan detail pembayaran sudah cocok dan terkonfirmasi sebelum transfer.</p></details>
+        <details><summary>Kapan akun akan dikirim setelah pembayaran?<span>＋</span></summary><p>Waktu dan cara penyerahan akun akan diinformasikan saat konfirmasi pesanan. Pastikan kamu memahami prosesnya sebelum menyelesaikan pembayaran.</p></details>
+        <details><summary>Apa yang harus saya lakukan setelah menerima akun?<span>＋</span></summary><p>Periksa akses akun dan ikuti instruksi penyerahan yang diberikan. Jika menemukan kendala, segera hubungi tim kami dengan menyertakan kode pesanan.</p></details>
+        <details><summary>Apakah ada garansi atau kebijakan pengembalian?<span>＋</span></summary><p>Ketentuan garansi atau pengembalian dapat berbeda untuk setiap akun. Minta penjelasan dan konfirmasi ketentuannya sebelum melakukan pembayaran.</p></details>
+        <details><summary>Apakah saya bisa meminta rekomendasi akun?<span>＋</span></summary><p>Bisa. Sampaikan game yang kamu cari, kebutuhan bermain, dan kisaran anggaran agar tim kami dapat membantu mencarikan pilihan yang sesuai.</p></details>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="brand" href="index.html"><span>Kyvora.id</span></a><small>© <span id="year"></span> KYVORA.ID. ALL RIGHTS RESERVED.</small></footer>
+  <script>
+    (() => {
+      const menu=document.querySelector('.menu-toggle');
+      const header=document.querySelector('.site-header');
+      menu?.addEventListener('click',()=>{
+        const expanded=menu.getAttribute('aria-expanded')==='true';
+        menu.setAttribute('aria-expanded',String(!expanded));
+        header.classList.toggle('nav-open',!expanded);
+      });
+      document.querySelectorAll('.desktop-nav a').forEach(link=>link.addEventListener('click',()=>{
+        header.classList.remove('nav-open');
+        menu?.setAttribute('aria-expanded','false');
+      }));
+      document.getElementById('year').textContent=new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
