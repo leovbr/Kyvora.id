@@ -71,3 +71,6 @@
 .admin-row-actions button[data-action="delete"]{color:#fca5a5}
 @media(max-width:900px){.admin-layout{grid-template-columns:1fr}.admin-heading{align-items:start;flex-direction:column}.admin-stats{width:100%}.admin-stats div{flex:1}}
 @media(max-width:600px){.admin-topbar{height:66px;padding:0 5%}.admin-main{padding:38px 5% 65px}.admin-heading h1{font-size:39px}.admin-notice{flex-direction:column;gap:6px}.admin-panel{padding:18px}.admin-list-toolbar{flex-wrap:wrap}.admin-list-toolbar input{flex-basis:100%}.admin-product-row{grid-template-columns:54px minmax(0,1fr) auto;gap:9px;padding:9px}.admin-product-thumb{width:54px;height:54px}.admin-product-details strong{font-size:10px}.stock-pill{font-size:7px}}
+
+.product-card>img{display:block;width:100%;height:190px;object-fit:cover;background:#10223a}
+@media(max-width:600px){.product-card>img{height:210px}}
