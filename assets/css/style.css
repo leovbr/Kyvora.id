@@ -740,3 +740,19 @@ filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 8px #a78bfa) drop-shadow(0 0 15
  .site-header>.language-selector .language-menu button{min-height:42px!important;grid-template-columns:24px minmax(0,1fr) auto!important;padding:7px 9px!important;font-size:11px!important;}
  .site-header>.language-selector .language-menu small{font-size:8px!important;}
 }
+
+
+/* Match LEOOSTORE country-flag treatment: compact 23px flag, 36px control */
+.language-selector{display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 36px!important;width:36px!important;min-width:36px!important;height:36px!important;margin:0 0 0 auto!important;padding:0!important;position:relative!important;isolation:isolate!important;}
+button.language-toggle{all:unset!important;box-sizing:border-box!important;-webkit-appearance:none!important;appearance:none!important;width:36px!important;min-width:36px!important;height:36px!important;min-height:36px!important;padding:0!important;margin:0!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;border:1px solid #6d4bd1!important;border-radius:999px!important;background:linear-gradient(135deg,#17233b,#0a1221)!important;color:#f5f3ff!important;box-shadow:0 0 14px #713cff35!important;cursor:pointer!important;}
+button.language-toggle:hover, .language-selector.is-open button.language-toggle{border-color:#a78bfa!important;box-shadow:0 0 0 2px #8b5cf622,0 0 14px #713cff55!important;}
+.language-globe{box-sizing:border-box!important;width:23px!important;height:23px!important;min-width:23px!important;min-height:23px!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;border-radius:50%!important;font-family:Arial,sans-serif!important;font-size:19px!important;font-weight:400!important;line-height:23px!important;letter-spacing:0!important;padding:0!important;margin:0!important;transform:none!important;}
+.language-menu .language-flag{box-sizing:border-box!important;width:23px!important;height:23px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;border-radius:50%!important;font-family:Arial,sans-serif!important;font-size:17px!important;line-height:23px!important;}
+@media(max-width:600px){
+ .site-header{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:0!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;}
+ .site-header>.brand{order:1!important;display:flex!important;flex:1 1 auto!important;min-width:0!important;max-width:calc(100% - 140px)!important;margin:0!important;white-space:nowrap!important;}
+ .site-header>.brand .brand-name{font-size:inherit!important;white-space:nowrap!important;}
+ .site-header>.language-selector{order:2!important;flex:0 0 36px!important;margin:0 0 0 auto!important;}
+ .site-header>.header-search-wrap{order:3!important;flex:0 0 30px!important;width:30px!important;margin:0 0 0 12px!important;}
+ .site-header>.menu-toggle{order:4!important;flex:0 0 30px!important;width:30px!important;margin:0 0 0 12px!important;}
+}
