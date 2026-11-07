@@ -182,3 +182,16 @@
 /* Make the crop surface reliably receive touch and pointer gestures */
 .photo-modal-preview{touch-action:none!important;pointer-events:auto!important;overscroll-behavior:contain}
 .photo-modal-preview img{touch-action:none!important;pointer-events:none!important;will-change:transform}
+
+/* Catalog card information hierarchy and aligned purchase row */
+.section-heading{grid-template-columns:minmax(0,1fr)!important}
+.catalog-count{display:none!important}
+.product-info .product-game{margin:7px 0 0!important;font-weight:700!important;color:var(--text)!important;line-height:1.5}
+.product-info .product-description{margin:5px 0 0!important;color:var(--muted)!important;font-size:13px!important;font-weight:400!important;line-height:1.65!important}
+.product-description>span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;white-space:normal;overflow-wrap:anywhere}
+.product-description.is-expanded>span{display:block;-webkit-line-clamp:unset;overflow:visible}
+.description-toggle{display:inline-block;margin-top:5px;padding:0;border:0;background:transparent;color:#c4b5fd;font:600 11px var(--font);cursor:pointer}
+.product-card-actions{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;margin-top:22px!important}
+.product-card-actions .product-price{margin:0!important;font-size:clamp(17px,4.5vw,24px)!important;line-height:1.2!important;font-weight:700!important;color:var(--accent)!important}
+.product-card-actions .buy-account{margin:0 0 0 auto!important;flex:0 0 auto}
+@media(max-width:420px){.product-info .product-description{font-size:12px!important}.product-card-actions{margin-top:20px!important}.product-card-actions .product-price{font-size:18px!important}.product-card-actions .buy-account{min-height:40px!important}}
