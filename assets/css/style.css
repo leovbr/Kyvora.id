@@ -254,3 +254,37 @@
 .header-search-panel .search-box{min-width:0;flex:none}
 .header-search-panel .search-box span{flex:0 0 auto}
 @media(max-width:640px){.header-search-toggle{width:38px;height:42px;flex-basis:38px}.header-search-panel{top:80px;right:5vw;width:min(90vw,360px)}.site-header{gap:clamp(10px,4vw,24px)}}
+
+
+/* KYVORA PILL SYSTEM — consistent rounded controls across public and admin pages */
+:root{--pill-radius:999px;--pill-surface:#10223a}
+.button,.header-cta,.filter,.catalog-tools select,.category-filter,
+.header-search-toggle,.menu-toggle,.admin-menu-toggle,
+.admin-primary,.admin-secondary,.admin-form-actions button,
+.admin-list-toolbar button,.admin-row-actions button,
+.admin-menu a,.admin-label,.stock-pill,
+.photo-editor button,.photo-editor-controls select,
+.crop-controls select,.why-cta .button,
+.sell-whatsapp,.product-info .button,.preview-button{
+  border-radius:var(--pill-radius)!important;
+}
+.header-cta{padding:11px 18px}
+.filter{padding-inline:19px}
+.catalog-tools select{padding-inline:18px}
+.category-filter{border-radius:var(--pill-radius)!important;overflow:hidden}
+.category-filter select{border:0!important;border-radius:0!important}
+.admin-menu{border-radius:20px!important;padding:9px!important}
+.admin-menu a{border:0!important;margin:2px 0;padding:12px 16px!important}
+.admin-menu a:last-child{border:0!important}
+.admin-menu-toggle{display:grid;place-items:center}
+.admin-primary,.admin-secondary,.admin-form-actions button,.admin-list-toolbar button{padding-inline:19px}
+.admin-row-actions button{padding:7px 13px}
+.admin-label,.stock-pill{padding:6px 11px}
+.header-search-toggle{border:1px solid transparent!important}
+.header-search-panel{border-radius:20px!important;overflow:hidden}
+.header-search-panel .search-box{border-radius:var(--pill-radius)!important;overflow:hidden}
+@media(max-width:600px){
+ .filter{padding-inline:15px}
+ .catalog-tools select{padding-inline:15px}
+ .admin-primary,.admin-secondary,.admin-form-actions button,.admin-list-toolbar button{min-height:42px}
+}
