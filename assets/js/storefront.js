@@ -39,7 +39,7 @@
     grid.innerHTML = visible.map((item) => {
       const image = item.imageUrl
         ? '<img src="' + escapeHTML(item.imageUrl) + '" alt="' + escapeHTML(item.name) + '" loading="lazy">'
-        : '<div class="product-image">KYVORA / ACCOUNT</div>';
+        : '<div class="product-image">KYVORA.ID / ACCOUNT</div>';
       return '<article class="product-card">' + image +
         '<div class="product-info"><h3>' + escapeHTML(item.name) + '</h3>' +
         '<p>' + escapeHTML(item.game || 'Game account') + ' · ' + escapeHTML(item.description || '') + '</p>' +
