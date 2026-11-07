@@ -657,3 +657,43 @@ filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 8px #a78bfa) drop-shadow(0 0 15
 .dashboard-links>a:hover{border-color:#8b5cf655!important;background:linear-gradient(100deg,#8b5cf61c,#536dff12)}
 .dashboard-links>a>i{color:#a78bfa}
 @media(max-width:600px){.admin-menu{min-width:min(230px,calc(100vw - 10%))!important}.admin-form-actions .admin-primary{flex:1 1 100%}.admin-form-actions .admin-secondary{flex:1}.admin-row-actions button{padding:7px 12px!important}}
+
+
+/* Homepage: compact brand intro and remove unused vertical space */
+.brand-intro{
+  max-width:1440px;
+  margin:0 auto;
+  padding:18px 7.2% 0;
+}
+.brand-intro p{
+  max-width:850px;
+  margin:0;
+  padding:13px 17px;
+  border-left:2px solid var(--accent);
+  background:linear-gradient(90deg,#8b5cf615,transparent 85%);
+  color:#c2cde0;
+  font-size:12px;
+  line-height:1.75;
+}
+.hero{min-height:0;padding-top:42px;padding-bottom:42px}
+.hero-meta{margin-top:36px}
+.catalog.section-wrap{padding-top:38px;padding-bottom:70px}
+.catalog-tools{margin-top:0;margin-bottom:20px}
+.site-footer .footer-main p{max-width:620px;line-height:1.75}
+@media(max-width:800px){
+ .brand-intro{padding:15px 5% 0}
+ .hero{padding-top:30px;padding-bottom:30px}
+ .catalog.section-wrap{padding-top:28px;padding-bottom:50px}
+}
+@media(max-width:600px){
+ .brand-intro{padding:12px 5% 0}
+ .brand-intro p{padding:10px 12px;font-size:11px;line-height:1.7}
+ .hero{padding-top:25px;padding-bottom:22px;gap:12px}
+ .hero-meta{margin-top:26px;gap:10px;justify-content:space-between}
+ .hero-meta strong{font-size:8px;letter-spacing:.7px}
+ .hero-meta small{font-size:8px}
+ .hero-art{height:285px;margin-top:8px}
+ .catalog.section-wrap{padding-top:22px;padding-bottom:42px}
+ .catalog-tools{margin-top:0;margin-bottom:16px}
+ .site-footer{padding-top:25px;padding-bottom:25px}
+}
