@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071426">
+  <meta name="description" content="Testimonial pelanggan Kyvora.id.">
+  <title>Testimonial — Kyvora.id</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Kyvora.id home"><span>Kyvora.id</span></a>
+    <nav class="desktop-nav" aria-label="Navigasi utama">
+      <a href="index.html#catalog">Katalog</a><a href="index.html#why-us">Keunggulan</a><a href="faq.html">FAQ</a><a href="testimonials.html" aria-current="page">Testimonial</a>
+    </nav>
+    <a class="header-cta" href="index.html#catalog">Jelajahi akun <span>↗</span></a>
+    <button class="menu-toggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+  </header>
+  <main>
+    <section class="testimonials-page section-wrap">
+      <div class="eyebrow"><span class="pulse"></span> CUSTOMER STORIES</div>
+      <h1>Real voices.<br><span>Real experiences.</span></h1>
+      <p class="testimonial-intro">Cerita dan pengalaman pelanggan Kyvora.id.</p>
+      <div class="testimonial-empty">
+        <span>✦</span>
+        <h2>Testimonial segera hadir</h2>
+        <p>Kami akan menampilkan ulasan pelanggan yang telah memberikan izin untuk membagikan pengalamannya.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="brand" href="index.html"><span>Kyvora.id</span></a><small>© <span id="year"></span> KYVORA.ID. ALL RIGHTS RESERVED.</small></footer>
+  <script>
+    (() => {
+      const menu=document.querySelector('.menu-toggle');
+      const header=document.querySelector('.site-header');
+      menu?.addEventListener('click',()=>{
+        const expanded=menu.getAttribute('aria-expanded')==='true';
+        menu.setAttribute('aria-expanded',String(!expanded));
+        header.classList.toggle('nav-open',!expanded);
+      });
+      document.querySelectorAll('.desktop-nav a').forEach(link=>link.addEventListener('click',()=>{
+        header.classList.remove('nav-open');
+        menu?.setAttribute('aria-expanded','false');
+      }));
+      document.getElementById('year').textContent=new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
