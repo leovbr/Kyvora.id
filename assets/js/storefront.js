@@ -30,9 +30,9 @@
     if (sort?.value === 'high') visible.sort((a,b) => b.price - a.price);
     if (sort?.value === 'newest') visible.sort((a,b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
 
-    count.textContent = String(visible.length).padStart(2, '0');
+    if (count) count.textContent = String(visible.length).padStart(2, '0');
     if (!visible.length) {
-      grid.innerHTML = '<div class="empty-state"><span>✦</span><h3>Katalog sedang disiapkan</h3><p>Belum ada akun yang cocok atau produk belum ditambahkan oleh admin.</p></div>';
+      grid.innerHTML = '';
       return;
     }
 
@@ -52,6 +52,8 @@
       '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
     })[char]);
   }
+
+  if (!grid) return;
 
   search?.addEventListener('input', render);
   sort?.addEventListener('change', render);
