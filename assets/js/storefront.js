@@ -32,7 +32,7 @@
 
     if (count) count.textContent = String(visible.length).padStart(2, '0');
     if (!visible.length) {
-      grid.innerHTML = '';
+      grid.innerHTML = '<div class="empty-state"><span>✦</span><h3>Katalog sedang disiapkan</h3><p>Belum ada akun yang cocok atau produk belum ditambahkan oleh admin.</p></div>';
       return;
     }
 
