@@ -1,46 +1,33 @@
 # Kyvora.id
 
-Website storefront for the Kyvora.id game-account shop.
+Website storefront and temporary admin prototype for the Kyvora.id game-account shop.
 
-## Current structure
+## Main pages
 
-```
-.
-├── index.html
-├── assets/
-│   ├── css/style.css
-│   └── js/storefront.js
-└── README.md
-```
+- `index.html` — public storefront and account catalog.
+- `faq.html` — customer FAQ.
+- `testimonials.html` — public customer testimonials.
+- `admin.html` — admin dashboard.
+- `admin-catalog.html` — add, edit, delete, and manage game-account listings.
+- `admin-testimonials.html` — add, edit, delete, and manage customer testimonials.
 
-## Current status
+## Admin prototype features
 
-- Responsive storefront foundation
-- Hero, catalog, benefits, FAQ, and footer sections
-- Catalog search, availability filter, and sorting UI
-- No fabricated inventory: the catalog remains empty until real products are supplied
-- No production database or admin credentials are embedded in the frontend
+- Hamburger navigation between Dashboard, Kelola katalog, Kelola testimoni, and Lihat website.
+- Catalog and testimonial records support up to 20 photos per item.
+- Image crop controls include 9:16, 16:9, 1:1, and 3:4 ratios, zoom, and horizontal/vertical positioning.
+- Product data and compressed photos are temporarily stored in browser LocalStorage under `kyvora_products_v1`.
+- Testimonial data and compressed photos are temporarily stored under `kyvora_testimonials_v1`.
+- JSON backup export is available on both management pages.
 
-## Next production steps
+## Important temporary-mode limitations
 
-1. Confirm the shop's WhatsApp contact and game categories.
-2. Connect the production Supabase project (public URL and anon key only; never expose service-role keys).
-3. Create and apply the database schema, access policies, and storage bucket.
-4. Build admin authentication and product/stock management.
-5. Connect the public catalog to Supabase and add product detail / WhatsApp checkout flow.
-6. Test mobile, desktop, access control, and deployment.
+LocalStorage is browser- and device-specific. Admin changes are not synchronized to other devices or public visitors. The testimonial page can only read the data stored in the same browser until Supabase is connected. There is no secure admin authentication yet. Do not use this as the live production data system.
+
+Supabase Database, Storage, and authenticated admin access will be connected after the frontend/admin workflow is completed. Never expose a Supabase service-role key in frontend code.
 
 ## Deployment
 
-Enable GitHub Pages for this repository using the `main` branch and `/(root)` as the publishing source. The site will then be available at:
+Enable GitHub Pages for this repository using the `main` branch and `/(root)` as the publishing source:
 
 `https://leovbr.github.io/Kyvora.id/`
-
-The separate portfolio demo should be created from a copy after the production site is complete. Its LocalStorage data must remain isolated from production.
-
-
-## Admin catalog (temporary local mode)
-- Open `admin.html` to add, edit, delete, and update product availability.
-- Product data and compressed product photos are stored in the current browser's localStorage under `kyvora_products_v1`.
-- This is a frontend prototype only: changes do not sync across devices or visitors and there is no secure admin authentication yet.
-- Supabase database, Storage, and authenticated admin access must be connected before using this as the live production catalog.
