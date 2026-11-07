@@ -462,3 +462,9 @@ filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 8px #a78bfa) drop-shadow(0 0 15
 @media(prefers-reduced-motion:reduce){
  .brand-name,.brand-ky,.brand-rest,.brand-name::before,.brand-name::after{animation:none!important;clip-path:none!important;opacity:1!important;transform:none!important}
 }
+
+
+/* Secondary public pages: keep the hamburger pinned to the far-right of the navbar */
+@media(max-width:600px){
+ .secondary-page .site-header .menu-toggle{margin-left:auto!important;flex:0 0 30px!important;width:30px!important;}
+}
