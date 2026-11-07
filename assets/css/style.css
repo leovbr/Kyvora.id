@@ -756,3 +756,105 @@ button.language-toggle:hover, .language-selector.is-open button.language-toggle{
  .site-header>.header-search-wrap{order:3!important;flex:0 0 30px!important;width:30px!important;margin:0 0 0 12px!important;}
  .site-header>.menu-toggle{order:4!important;flex:0 0 30px!important;width:30px!important;margin:0 0 0 12px!important;}
 }
+
+
+/* Kyvora public interaction polish — buttons, product shine and hero motion */
+body:not(.admin-body) :is(
+  .button,.header-cta,.header-search-toggle,.menu-toggle,.language-toggle,
+  .desktop-nav a,.filter,.category-trigger,.category-options button,
+  .preview-images,.buy-account,.faq-contact-link,.sell-whatsapp,.text-link
+){
+  transition:
+    color .24s ease,
+    background-color .24s ease,
+    background .24s ease,
+    border-color .24s ease,
+    box-shadow .24s ease,
+    filter .24s ease,
+    transform .24s cubic-bezier(.2,.75,.25,1);
+  -webkit-tap-highlight-color:transparent;
+}
+body:not(.admin-body) :is(
+  .button,.header-cta,.header-search-toggle,.menu-toggle,.language-toggle,
+  .desktop-nav a,.filter,.category-trigger,.category-options button,
+  .preview-images,.buy-account,.faq-contact-link,.sell-whatsapp,.text-link
+):hover{
+  filter:brightness(1.12);
+  box-shadow:0 0 0 1px #8b5cf633,0 0 17px #8b5cf644;
+  transform:translateY(-1px) scale(1.015);
+}
+body:not(.admin-body) :is(
+  .button,.header-cta,.header-search-toggle,.menu-toggle,.language-toggle,
+  .filter,.category-trigger,.category-options button,
+  .preview-images,.buy-account,.faq-contact-link,.sell-whatsapp
+):active{
+  filter:brightness(1.08);
+  transform:scale(.98);
+  box-shadow:0 0 0 1px #a78bfa66,0 0 12px #8b5cf655;
+}
+body:not(.admin-body) :is(button,a):focus-visible{
+  outline:2px solid #a78bfa;
+  outline-offset:3px;
+}
+
+/* Product photos: one soft diagonal shine sweep, independent of gallery swiping */
+.product-gallery::after{
+  content:"";
+  position:absolute;
+  z-index:2;
+  inset:-35% auto -35% -65%;
+  width:38%;
+  pointer-events:none;
+  opacity:0;
+  transform:skewX(-22deg);
+  background:linear-gradient(90deg,transparent 0%,#ffffff08 25%,#ffffff45 49%,#c4b5fd35 58%,#ffffff08 76%,transparent 100%);
+  filter:blur(2px);
+  animation:kyvora-product-shine 7.2s ease-in-out infinite;
+}
+@keyframes kyvora-product-shine{
+  0%,68%{left:-65%;opacity:0}
+  72%{opacity:.75}
+  88%{left:135%;opacity:.7}
+  100%{left:135%;opacity:0}
+}
+
+/* Hero trust points and floating labels reveal in a calm stagger */
+.hero-meta>div{
+  opacity:0;
+  animation:kyvora-hero-rise .7s cubic-bezier(.2,.75,.25,1) forwards;
+}
+.hero-meta>div:nth-of-type(1){animation-delay:.15s}
+.hero-meta>div:nth-of-type(2){animation-delay:.3s}
+.hero-meta>div:nth-of-type(3){animation-delay:.45s}
+@keyframes kyvora-hero-rise{
+  from{opacity:0;transform:translateY(9px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.floating-tag{
+  animation:kyvora-tag-enter .8s cubic-bezier(.2,.75,.25,1) both;
+}
+.tag-top{animation-delay:.35s}
+.tag-bottom{animation-delay:.55s}
+@keyframes kyvora-tag-enter{
+  from{opacity:0;transform:translateY(10px) scale(.985)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.tag-icon{
+  animation:kyvora-star-breathe 4.8s ease-in-out infinite;
+}
+@keyframes kyvora-star-breathe{
+  0%,100%{filter:drop-shadow(0 0 0 #a78bfa00);transform:rotate(0deg)}
+  50%{filter:drop-shadow(0 0 7px #a78bfa99);transform:rotate(12deg)}
+}
+.emblem-bottom .emblem-ky{color:#8b5cf6}
+.emblem-bottom .emblem-rest{color:#f1f5ff}
+.emblem-bottom .emblem-ky,
+.emblem-bottom .emblem-rest{
+  text-shadow:0 0 12px #8b5cf633;
+}
+@media(prefers-reduced-motion:reduce){
+  body:not(.admin-body) :is(button,a){transition:none!important}
+  .product-gallery::after,.hero-meta>div,.floating-tag,.tag-icon{
+    animation:none!important;opacity:1!important;transform:none!important
+  }
+}
