@@ -997,3 +997,9 @@ body:not(.admin-body) :is(button,a):focus-visible{
   }
   .lightbox-close{top:10px!important;right:10px!important}
 }
+
+/* Testimonial image preview button */
+.testimonial-photos{position:relative}
+.testimonial-photos img{display:block;max-width:100%;cursor:zoom-in}
+.testimonial-photos .testimonial-preview{position:absolute;right:10px;bottom:10px;z-index:4;min-height:34px;padding:0 14px;border:1px solid #ffffff55;border-radius:0;background:#071426df;color:#fff;font:700 10px var(--font);cursor:pointer;backdrop-filter:blur(8px)}
+.testimonial-photos .testimonial-preview:hover{border-color:#c4b5fd;background:#10223a}
