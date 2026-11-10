@@ -1001,5 +1001,15 @@ body:not(.admin-body) :is(button,a):focus-visible{
 /* Testimonial image preview button */
 .testimonial-photos{position:relative}
 .testimonial-photos img{display:block;max-width:100%;cursor:zoom-in}
-.testimonial-photos .testimonial-preview{position:absolute;right:10px;bottom:10px;z-index:4;min-height:34px;padding:0 14px;border:1px solid #ffffff55;border-radius:0;background:#071426df;color:#fff;font:700 10px var(--font);cursor:pointer;backdrop-filter:blur(8px)}
-.testimonial-photos .testimonial-preview:hover{border-color:#c4b5fd;background:#10223a}
+.testimonial-photos .testimonial-preview{
+ position:absolute;right:10px;bottom:10px;z-index:4;
+ min-height:36px;padding:0 16px;
+ border:1px solid #8b5cf688;border-radius:999px;
+ background:linear-gradient(135deg,#12243df2,#071426f2);
+ color:#f1f5ff;font:700 10px var(--font);letter-spacing:.15px;
+ box-shadow:0 5px 18px #0007,inset 0 1px 0 #ffffff12;
+ backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+ cursor:pointer;transition:background .2s ease,border-color .2s ease,transform .2s ease,color .2s ease;
+}
+.testimonial-photos .testimonial-preview:active{transform:scale(.96);background:#30205a;border-color:#a78bfa}
+@media(hover:hover){.testimonial-photos .testimonial-preview:hover{background:linear-gradient(135deg,#263c60,#182944);border-color:#a78bfa;color:#c4b5fd}}
