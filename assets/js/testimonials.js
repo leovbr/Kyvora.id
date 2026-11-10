@@ -17,14 +17,31 @@ function paintLight(){if(!modal||!lightImgs.length)return;modal.querySelector('i
 function stepLight(dir){if(lightImgs.length<2)return;lightIndex=(lightIndex+dir+lightImgs.length)%lightImgs.length;paintLight()}
 function closeLight(){modal?.classList.remove('open')}
 function openLight(imgs){if(!imgs.length)return;ensureModal();lightImgs=imgs;lightIndex=0;paintLight();modal.classList.add('open')}
+function setupCarousel(box,imgs){
+ if(imgs.length<2)return;
+ let index=0,timer=null,startX=0,startY=0;
+ const image=box.querySelector('.testimonial-slide-image'),count=box.querySelector('.testimonial-slide-count');
+ function show(next){index=(next+imgs.length)%imgs.length;image.src=imgs[index];image.alt='Foto testimoni '+(index+1);count.textContent=(index+1)+' / '+imgs.length}
+ function stop(){if(timer)clearInterval(timer);timer=null}
+ function start(){stop();if(!document.hidden)timer=setInterval(()=>show(index+1),5000)}
+ box.querySelector('[data-slide="prev"]').addEventListener('click',()=>{show(index-1);start()});
+ box.querySelector('[data-slide="next"]').addEventListener('click',()=>{show(index+1);start()});
+ box.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;stop()},{passive:true});
+ box.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX,dy=e.changedTouches[0].clientY-startY;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))show(index+(dx<0?1:-1));start()},{passive:true});
+ box.addEventListener('mouseenter',stop);box.addEventListener('mouseleave',start);
+ document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
+ start();
+}
 (async()=>{
  try{
   const rows=await KyvoraData.listTestimonials();if(!rows.length)return;
   document.querySelector('.testimonial-empty')?.remove();
   root.innerHTML='<div class="testimonial-grid">'+rows.map((x,i)=>{
    const imgs=Array.isArray(x.images)?x.images.filter(Boolean):[];
-   return '<article class="testimonial-card"><div class="testimonial-photos">'+imgs.map((src,j)=>'<img src="'+esc(src)+'" alt="Foto testimoni '+(j+1)+'" loading="lazy">').join('')+(imgs.length?'<button class="preview-images testimonial-preview" type="button" data-preview="'+i+'">Preview gambar</button>':'')+'</div><div class="testimonial-card-copy"><small>'+(x.date?esc(x.date):'CUSTOMER STORY')+'</small><h2>'+esc(x.title)+'</h2><p>'+esc(x.description||'')+'</p></div></article>';
+   const gallery=imgs.length?'<div class="testimonial-carousel" data-gallery="'+i+'"><img class="testimonial-slide-image" src="'+esc(imgs[0])+'" alt="Foto testimoni 1" loading="lazy">'+(imgs.length>1?'<button class="testimonial-slide-arrow is-prev" type="button" data-slide="prev" aria-label="Foto sebelumnya">‹</button><button class="testimonial-slide-arrow is-next" type="button" data-slide="next" aria-label="Foto berikutnya">›</button><span class="testimonial-slide-count" aria-live="polite">1 / '+imgs.length+'</span>':'')+'</div><button class="preview-images testimonial-preview" type="button" data-preview="'+i+'">Preview gambar</button>':'';
+   return '<article class="testimonial-card"><div class="testimonial-photos">'+gallery+'</div><div class="testimonial-card-copy"><small>'+(x.date?esc(x.date):'CUSTOMER STORY')+'</small><h2>'+esc(x.title)+'</h2><p>'+esc(x.description||'')+'</p></div></article>';
   }).join('')+'</div>';
+  root.querySelectorAll('[data-gallery]').forEach(box=>{const row=rows[Number(box.dataset.gallery)],imgs=Array.isArray(row?.images)?row.images.filter(Boolean):[];setupCarousel(box,imgs)});
   root.querySelectorAll('[data-preview]').forEach(btn=>btn.addEventListener('click',()=>{const row=rows[Number(btn.dataset.preview)];openLight(Array.isArray(row?.images)?row.images.filter(Boolean):[])}));
  }catch(e){root.innerHTML='<p class="testimonial-intro">Testimoni belum dapat dimuat. Silakan coba beberapa saat lagi.</p>';console.error(e)}
 })();
