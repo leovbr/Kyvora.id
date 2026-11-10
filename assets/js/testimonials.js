@@ -21,11 +21,11 @@ function setupCarousel(box,imgs){
  if(imgs.length<2)return;
  let index=0,timer=null,startX=0,startY=0;
  const image=box.querySelector('.testimonial-slide-image'),count=box.querySelector('.testimonial-slide-count');
- function show(next){index=(next+imgs.length)%imgs.length;image.src=imgs[index];image.alt='Foto testimoni '+(index+1);count.textContent=(index+1)+' / '+imgs.length}
+ function show(next,dir){dir=dir||1;index=(next+imgs.length)%imgs.length;const previous=image.cloneNode();previous.removeAttribute('loading');previous.classList.add('testimonial-slide-previous');previous.alt='';previous.setAttribute('aria-hidden','true');box.append(previous);image.src=imgs[index];image.alt='Foto testimoni '+(index+1);count.textContent=(index+1)+' / '+imgs.length;image.onload=()=>{if(image.naturalWidth&&image.naturalHeight)box.style.aspectRatio=image.naturalWidth+' / '+image.naturalHeight};if(image.animate){image.animate([{transform:'translateX('+(dir*42)+'px)',opacity:.65},{transform:'translateX(0)',opacity:1}],{duration:260,easing:'cubic-bezier(.22,.75,.25,1)'});previous.animate([{transform:'translateX(0)',opacity:1},{transform:'translateX('+(-dir*42)+'px)',opacity:0}],{duration:260,easing:'cubic-bezier(.22,.75,.25,1)'}).onfinish=()=>previous.remove()}else previous.remove()}
  function stop(){if(timer)clearInterval(timer);timer=null}
- function start(){stop();if(!document.hidden)timer=setInterval(()=>show(index+1),5000)}
+ function start(){stop();if(!document.hidden)timer=setInterval(()=>show(index+1,1),5000)}
  box.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;stop()},{passive:true});
- box.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX,dy=e.changedTouches[0].clientY-startY;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))show(index+(dx<0?1:-1));start()},{passive:true});
+ box.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX,dy=e.changedTouches[0].clientY-startY;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))show(index+(dx<0?1:-1),dx<0?1:-1);start()},{passive:true});
  box.addEventListener('mouseenter',stop);box.addEventListener('mouseleave',start);
  document.addEventListener('visibilitychange',()=>document.hidden?stop():start());
  start();
